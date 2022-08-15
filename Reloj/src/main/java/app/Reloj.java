@@ -23,18 +23,12 @@ public class Reloj {
 
     public static void main(String[] args) {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        
+
         JFrame f = new JFrame("Digital Clock");
         ClockLabel dateLable = new ClockLabel("date");
         ClockLabel timeLable = new ClockLabel("time");
         Visibilidad boton = new Visibilidad(f);
-        boton.setText("Siempre Visible?");
-        boton.setHorizontalAlignment(SwingConstants.RIGHT);
-        boton.setForeground(Color.WHITE);
-        boton.setSize(50, 30);
-        boton.setBackground(Color.BLACK);
-        boton.setFocusable(false);
-        
+
         crearFuente();
 
         f.setSize(300, 150);
@@ -100,22 +94,29 @@ class ClockLabel extends JLabel implements ActionListener {
 }
 
 class Visibilidad extends JCheckBox implements ChangeListener {
+
     JFrame f;
-    public Visibilidad(JFrame f){
-      this.addChangeListener(this);
-      this.f=f;
+
+    public Visibilidad(JFrame f) {
+        this.addChangeListener(this);
+        this.f = f;
+
+        this.setText("Siempre Visible?");
+        this.setHorizontalAlignment(SwingConstants.RIGHT);
+        this.setForeground(Color.WHITE);
+        this.setSize(50, 30);
+        this.setBackground(Color.BLACK);
+        this.setFocusable(false);
     }
+
     @Override
     public void stateChanged(ChangeEvent e) {
-        if(this.isSelected()==true){
+        if (this.isSelected() == true) {
             f.setAlwaysOnTop(true);
-            
-        }else{
+
+        } else {
             f.setAlwaysOnTop(false);
         }
     }
-    
-    
-    
 
 }
